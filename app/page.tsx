@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
-import HeroSection from './components/HeroSection';
+import HeroWithTransition from './components/HeroWithTransition';
+import QuestionFlow from './components/QuestionFlow';
 import DailyWorkSection from './components/DailyWorkSection';
 import WhyAIProgrammingSection from './components/WhyAIProgrammingSection';
 import WhatYouCanDoWithAISection from './components/WhatYouCanDoWithAISection';
@@ -16,6 +17,10 @@ import FinalCTASection from './components/FinalCTASection';
 
 export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [showHero, setShowHero] = useState(true);
+  const [showQuestionFlow, setShowQuestionFlow] = useState(false);
+  const [hideHeader, setHideHeader] = useState(false);
+  const [showApplicationForm, setShowApplicationForm] = useState(false);
 
   useEffect(() => {
     const updateScrollProgress = () => {
@@ -51,6 +56,76 @@ export default function Home() {
     return () => observer.disconnect();
   }, []);
 
+  const handleQuestionFlowComplete = () => {
+    setShowQuestionFlow(false);
+    setShowApplicationForm(true);
+    setHideHeader(false);
+  };
+
+  const handleHeroProceed = () => {
+    setShowHero(false);
+    setShowQuestionFlow(true);
+  };
+
+  if (showHero) {
+    return (
+      <div className="min-h-screen bg-black">
+        <Header hide={false} />
+        <HeroWithTransition onProceed={handleHeroProceed} />
+      </div>
+    );
+  }
+
+  if (showQuestionFlow) {
+    return (
+      <QuestionFlow 
+        onComplete={handleQuestionFlowComplete}
+        hideHeader={hideHeader}
+        setHideHeader={setHideHeader}
+      />
+    );
+  }
+
+  if (showApplicationForm) {
+    return (
+      <div className="min-h-screen bg-black">
+        <Header hide={false} />
+        <div className="pt-20">
+          <section id="application" className="py-20 bg-gradient-to-b from-gray-900 to-black">
+            <div className="container mx-auto px-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-center mb-12 bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                お申し込みフォーム
+              </h2>
+              <div className="max-w-2xl mx-auto bg-gray-800/50 backdrop-blur-md rounded-2xl p-8 border border-cyan-500/20">
+                <form className="space-y-6">
+                  <div>
+                    <label className="block text-gray-300 mb-2">お名前 <span className="text-red-500">*</span></label>
+                    <input type="text" className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-cyan-500 focus:outline-none transition-colors" placeholder="山田 太郎" required />
+                  </div>
+                  <div>
+                    <label className="block text-gray-300 mb-2">メールアドレス <span className="text-red-500">*</span></label>
+                    <input type="email" className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-cyan-500 focus:outline-none transition-colors" placeholder="example@email.com" required />
+                  </div>
+                  <div>
+                    <label className="block text-gray-300 mb-2">電話番号</label>
+                    <input type="tel" className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-cyan-500 focus:outline-none transition-colors" placeholder="090-1234-5678" />
+                  </div>
+                  <div>
+                    <label className="block text-gray-300 mb-2">ご質問・ご要望</label>
+                    <textarea className="w-full px-4 py-3 bg-gray-900/50 border border-gray-700 rounded-lg text-white focus:border-cyan-500 focus:outline-none transition-colors h-32" placeholder="ご自由にお書きください"></textarea>
+                  </div>
+                  <button type="submit" className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold py-4 px-8 rounded-lg hover:from-cyan-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-xl">
+                    送信する
+                  </button>
+                </form>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-black">
       {/* スクロールプログレスバー */}
@@ -61,11 +136,12 @@ export default function Home() {
         />
       </div>
 
-      <Header />
+      <Header hide={hideHeader} />
 
-      <HeroSection />
-
-      <DailyWorkSection />
+      {/* 他のセクションはヘッダーから見れるように残す */}
+      <div className="pt-20">
+        <DailyWorkSection />
+      </div>
 
       <WhyAIProgrammingSection />
 
