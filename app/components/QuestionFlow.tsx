@@ -89,6 +89,7 @@ export default function QuestionFlow({ onComplete, hideHeader, setHideHeader, in
             src="/3141210-uhd_3840_2160_25fps.mp4"
             autoPlay
             muted
+            loop
             playsInline
           />
           <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
@@ -159,6 +160,7 @@ export default function QuestionFlow({ onComplete, hideHeader, setHideHeader, in
           src="/3141210-uhd_3840_2160_25fps.mp4"
           autoPlay
           muted
+          loop
           playsInline
         />
         <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
