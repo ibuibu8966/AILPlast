@@ -62,9 +62,11 @@ export default function Home() {
     setHideHeader(false);
   };
 
-  const handleHeroProceed = () => {
+  const handleHeroProceed = (answer: 'yes' | 'no') => {
     setShowHero(false);
     setShowQuestionFlow(true);
+    // 「はい」の場合はq2a、「いいえ」の場合はq2bから開始
+    sessionStorage.setItem('initialAnswer', answer);
   };
 
   if (showHero) {
@@ -77,11 +79,13 @@ export default function Home() {
   }
 
   if (showQuestionFlow) {
+    const initialAnswer = sessionStorage.getItem('initialAnswer') as 'yes' | 'no' || 'yes';
     return (
-      <QuestionFlow 
+      <QuestionFlow
         onComplete={handleQuestionFlowComplete}
         hideHeader={hideHeader}
         setHideHeader={setHideHeader}
+        initialAnswer={initialAnswer}
       />
     );
   }

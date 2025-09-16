@@ -25,7 +25,7 @@ export interface FinalMessage {
 export const questions: Record<string, Question> = {
   q1: {
     id: 'q1',
-    text: 'この1年で、年収を100万円以上アップさせたいですか？',
+    text: 'AIに関する情報で人生を豊かにしませんか？',
     nextQuestions: {
       yes: 'q2a',
       no: 'q2b'
@@ -100,7 +100,7 @@ export const questions: Record<string, Question> = {
 export const finalMessages: Record<string, FinalMessage> = {
   'q3a1-yes': {
     id: 'q3a1-yes',
-    title: '素晴らしい決断です！',
+    title: 'では、人生を変えましょう。',
     subtitle: '今から3ヶ月後、AIエンジニアとして活躍するあなたの姿が見えます',
     buttonText: '今すぐ申し込む',
     pricing: {
@@ -117,7 +117,7 @@ export const finalMessages: Record<string, FinalMessage> = {
   },
   'q4-yes': {
     id: 'q4-yes',
-    title: '賢明な選択です！',
+    title: 'では、人生を変えましょう。',
     subtitle: 'まずは1ヶ月、リスクなしで始めてみましょう',
     buttonText: '今すぐ申し込む',
     pricing: {
@@ -132,7 +132,7 @@ export const finalMessages: Record<string, FinalMessage> = {
   },
   'q5-yes': {
     id: 'q5-yes',
-    title: '未来を変える一歩を踏み出しましょう',
+    title: 'では、人生を変えましょう。',
     subtitle: '今から始めることで、3ヶ月後には別人のようなスキルが身につきます',
     buttonText: '今すぐ申し込む',
     pricing: {
@@ -147,7 +147,7 @@ export const finalMessages: Record<string, FinalMessage> = {
   },
   'q5-no': {
     id: 'q5-no',
-    title: 'いつでも戻れます。今が最短の始めどきです。',
+    title: 'では、人生を変えましょう。',
     subtitle: '迷っている間にも、チャンスは過ぎていきます。小さな一歩から始めませんか？',
     buttonText: '今すぐ申し込む',
     pricing: {

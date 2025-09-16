@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import ParticleSystem from './ParticleSystem';
 
 interface HeroWithTransitionProps {
-  onProceed: () => void;
+  onProceed: (answer: 'yes' | 'no') => void;
 }
 
 export default function HeroWithTransition({ onProceed }: HeroWithTransitionProps) {
@@ -47,17 +47,26 @@ export default function HeroWithTransition({ onProceed }: HeroWithTransitionProp
             <span className="text-cyan-400 font-semibold">開発速度10倍</span>のエンジニアになる
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-8">
-            <button 
-              onClick={onProceed}
-              className="group relative inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-cyan-500/50 hover:-translate-y-1 transition-all duration-300"
-            >
-              <span>あなたに最適なプランを診断</span>
-              <svg className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-              <div className="absolute inset-0 bg-white rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-            </button>
+          <div className="mb-8">
+            <h2 className="text-2xl md:text-3xl text-white font-bold mb-8">
+              AIに関する情報で人生を豊かにしませんか？
+            </h2>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={() => onProceed('yes')}
+                className="group relative inline-flex items-center justify-center px-12 py-6 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold text-xl rounded-2xl hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-300 shadow-xl min-w-[150px]"
+              >
+                <span>はい</span>
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300" />
+              </button>
+              <button
+                onClick={() => onProceed('no')}
+                className="group relative inline-flex items-center justify-center px-12 py-6 bg-gradient-to-r from-gray-600 to-gray-700 text-white font-bold text-xl rounded-2xl hover:from-gray-700 hover:to-gray-800 transform hover:scale-105 transition-all duration-300 shadow-xl min-w-[150px]"
+              >
+                <span>いいえ</span>
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300" />
+              </button>
+            </div>
           </div>
 
           <p className="text-gray-400 text-sm">

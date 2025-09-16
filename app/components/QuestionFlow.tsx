@@ -8,14 +8,15 @@ interface QuestionFlowProps {
   onComplete: () => void;
   hideHeader: boolean;
   setHideHeader: (hide: boolean) => void;
+  initialAnswer?: 'yes' | 'no';
 }
 
-export default function QuestionFlow({ onComplete, hideHeader, setHideHeader }: QuestionFlowProps) {
-  const [currentQuestionId, setCurrentQuestionId] = useState('q1');
-  const [answers, setAnswers] = useState<Record<string, Answer>>({});
+export default function QuestionFlow({ onComplete, hideHeader, setHideHeader, initialAnswer = 'yes' }: QuestionFlowProps) {
+  const [currentQuestionId, setCurrentQuestionId] = useState(initialAnswer === 'yes' ? 'q2a' : 'q2b');
+  const [answers, setAnswers] = useState<Record<string, Answer>>({ q1: initialAnswer });
   const [showFinal, setShowFinal] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [progress, setProgress] = useState(1);
+  const [progress, setProgress] = useState(2);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isReversing, setIsReversing] = useState(false);
 
