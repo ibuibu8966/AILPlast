@@ -28,18 +28,22 @@ export default function QuestionFlow({ onComplete, hideHeader, setHideHeader, in
     const video = videoRef.current;
     if (!video) return;
 
+    // 初期再生位置を0.5秒に設定
+    video.currentTime = 0.5;
+
     const handleTimeUpdate = () => {
       if (!isReversing && video.currentTime >= video.duration - 0.1) {
         setIsReversing(true);
         video.playbackRate = -1;
-      } else if (isReversing && video.currentTime <= 0.1) {
+      } else if (isReversing && video.currentTime <= 0.5) {
         setIsReversing(false);
         video.playbackRate = 1;
+        video.currentTime = 0.5; // 0.5秒に戻す
       }
     };
 
     video.addEventListener('timeupdate', handleTimeUpdate);
-    
+
     return () => {
       video.removeEventListener('timeupdate', handleTimeUpdate);
     };
@@ -194,19 +198,17 @@ export default function QuestionFlow({ onComplete, hideHeader, setHideHeader, in
           <button
             onClick={() => handleAnswer('yes')}
             disabled={isAnimating}
-            className="group relative px-12 py-6 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-bold text-xl rounded-2xl hover:from-green-600 hover:to-emerald-700 transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-12 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xl rounded-full hover:from-cyan-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <span className="relative z-10">はい</span>
-            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300" />
+            はい
           </button>
 
           <button
             onClick={() => handleAnswer('no')}
             disabled={isAnimating}
-            className="group relative px-12 py-6 bg-gradient-to-r from-gray-600 to-gray-700 text-white font-bold text-xl rounded-2xl hover:from-gray-700 hover:to-gray-800 transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+            className="px-12 py-4 bg-gradient-to-r from-gray-600 to-gray-700 text-white font-bold text-xl rounded-full hover:from-gray-700 hover:to-gray-800 transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <span className="relative z-10">いいえ</span>
-            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300" />
+            いいえ
           </button>
         </div>
       </div>
