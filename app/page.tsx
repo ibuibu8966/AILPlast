@@ -65,7 +65,6 @@ export default function Home() {
   const handleHeroProceed = (answer: 'yes' | 'no') => {
     setShowHero(false);
     setShowQuestionFlow(true);
-    // 「はい」の場合はq2a、「いいえ」の場合はq2bから開始
     sessionStorage.setItem('initialAnswer', answer);
   };
 

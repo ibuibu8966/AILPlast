@@ -68,7 +68,7 @@ export default function HeroWithTransition({ onProceed }: HeroWithTransitionProp
           </div>
 
           <p className="text-gray-400 text-sm">
-            ※ 簡単な3つの質問に答えるだけ（所要時間：約30秒）
+            ※ あなたに合った提案をするための簡単な質問（所要時間：約1分）
           </p>
 
           {/* 実績バッジ */}

@@ -12,42 +12,16 @@ interface QuestionFlowProps {
 }
 
 export default function QuestionFlow({ onComplete, hideHeader, setHideHeader, initialAnswer = 'yes' }: QuestionFlowProps) {
-  const [currentQuestionId, setCurrentQuestionId] = useState(initialAnswer === 'yes' ? 'q2a' : 'q2b');
-  const [answers, setAnswers] = useState<Record<string, Answer>>({ q1: initialAnswer });
+  const [currentQuestionId, setCurrentQuestionId] = useState(initialAnswer === 'yes' ? 'q1' : 'q2b');
+  const [answers, setAnswers] = useState<Record<string, Answer>>({});
   const [showFinal, setShowFinal] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [progress, setProgress] = useState(2);
+  const [progress, setProgress] = useState(initialAnswer === 'yes' ? 1 : 2);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isReversing, setIsReversing] = useState(false);
 
   useEffect(() => {
     setHideHeader(true);
   }, [setHideHeader]);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // 初期再生位置を0.5秒に設定
-    video.currentTime = 0.5;
-
-    const handleTimeUpdate = () => {
-      if (!isReversing && video.currentTime >= video.duration - 0.1) {
-        setIsReversing(true);
-        video.playbackRate = -1;
-      } else if (isReversing && video.currentTime <= 0.5) {
-        setIsReversing(false);
-        video.playbackRate = 1;
-        video.currentTime = 0.5; // 0.5秒に戻す
-      }
-    };
-
-    video.addEventListener('timeupdate', handleTimeUpdate);
-
-    return () => {
-      video.removeEventListener('timeupdate', handleTimeUpdate);
-    };
-  }, [isReversing]);
 
   const handleAnswer = (answer: Answer) => {
     if (isAnimating) return;
@@ -173,13 +147,13 @@ export default function QuestionFlow({ onComplete, hideHeader, setHideHeader, in
       <div className="absolute top-8 left-0 right-0 z-10">
         <div className="max-w-md mx-auto px-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-gray-400 text-sm">質問 {progress} / 3</span>
-            <span className="text-gray-400 text-sm">{Math.round((progress / 3) * 100)}%</span>
+            <span className="text-gray-400 text-sm">質問 {progress} / 6</span>
+            <span className="text-gray-400 text-sm">{Math.round((progress / 6) * 100)}%</span>
           </div>
           <div className="w-full bg-gray-800 rounded-full h-2">
             <div 
               className="bg-gradient-to-r from-cyan-500 to-blue-600 h-2 rounded-full transition-all duration-500"
-              style={{ width: `${(progress / 3) * 100}%` }}
+              style={{ width: `${(progress / 6) * 100}%` }}
             />
           </div>
         </div>
@@ -191,6 +165,11 @@ export default function QuestionFlow({ onComplete, hideHeader, setHideHeader, in
           <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
             {currentQuestion.text}
           </h1>
+          {currentQuestion.subtext && (
+            <p className="text-xl text-gray-300 mt-4">
+              {currentQuestion.subtext}
+            </p>
+          )}
         </div>
 
         {/* 回答ボタン */}
