@@ -1,6 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 export default function FinalCTASection() {
+  const router = useRouter();
   return (
     <section className="py-20 bg-gray-900">
       <div className="container mx-auto px-6">
@@ -32,7 +35,9 @@ export default function FinalCTASection() {
             </div>
             
             <div>
-              <button className="bg-gradient-to-r from-cyan-500 to-cyan-400 text-white px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 text-base sm:text-lg md:text-xl lg:text-2xl font-bold rounded-full shadow-2xl hover:shadow-cyan-500/25 hover:-translate-y-2 transition-all duration-300 mb-6 whitespace-nowrap">
+              <button
+                onClick={() => router.push('/contact')}
+                className="bg-gradient-to-r from-cyan-500 to-cyan-400 text-white px-8 sm:px-12 md:px-16 py-4 sm:py-5 md:py-6 text-base sm:text-lg md:text-xl lg:text-2xl font-bold rounded-full shadow-2xl hover:shadow-cyan-500/25 hover:-translate-y-2 transition-all duration-300 mb-6 whitespace-nowrap">
                 <i className="fas fa-rocket mr-2 sm:mr-4"></i>お申し込みはこちら
               </button>
               

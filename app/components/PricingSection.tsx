@@ -1,6 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 export default function PricingSection() {
+  const router = useRouter();
   return (
     <section id="pricing" className="py-20 bg-gray-900">
       <div className="container mx-auto px-6">
@@ -80,7 +83,10 @@ export default function PricingSection() {
             </div>
             
             <div className="text-center">
-              <button className="bg-gradient-to-r from-cyan-500 to-cyan-400 text-white px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg md:text-xl font-bold rounded-full shadow-2xl hover:shadow-cyan-500/25 hover:-translate-y-2 transition-all duration-300 w-full">
+              <button
+                onClick={() => router.push('/contact')}
+                className="bg-gradient-to-r from-cyan-500 to-cyan-400 text-white px-8 sm:px-12 py-3 sm:py-4 text-base sm:text-lg md:text-xl font-bold rounded-full shadow-2xl hover:shadow-cyan-500/25 hover:-translate-y-2 transition-all duration-300 w-full"
+              >
                 <i className="fas fa-credit-card mr-3"></i><span className="whitespace-nowrap">今すぐ申し込む</span>
               </button>
               <p className="text-xs sm:text-sm text-gray-400 mt-4">

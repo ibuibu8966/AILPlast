@@ -1,6 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
 export default function HeroSection() {
+  const router = useRouter();
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Night city background */}
@@ -66,7 +69,10 @@ export default function HeroSection() {
 
           {/* CTA Button */}
           <div className="mb-12">
-            <button className="group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/50">
+            <button
+              onClick={() => router.push('/contact')}
+              className="group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/50"
+            >
               <span className="relative z-10">今すぐ始める</span>
               <i className="fas fa-arrow-right relative z-10 group-hover:translate-x-1 transition-transform"></i>
               <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
