@@ -6,11 +6,35 @@ export default function CurriculumSection() {
   const [activeTab, setActiveTab] = useState('basic');
 
   return (
-    <section id="curriculum" className="py-20 bg-gray-900">
-      <div className="container mx-auto px-6">
+    <section id="curriculum" className="relative py-20 bg-gray-900 overflow-hidden">
+      {/* Tech grid overlay */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px)`,
+          backgroundSize: '50px 50px',
+          opacity: 0.02
+        }}></div>
+      </div>
+
+      {/* Animated glow effects */}
+      <div className="absolute top-40 left-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse pointer-events-none z-0"></div>
+      <div className="absolute bottom-40 right-1/4 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl animate-pulse pointer-events-none z-0" style={{animationDelay: '2s'}}></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 fade-in">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-white">
-            <span className="inline-block">カリキュラム</span><span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent whitespace-nowrap">内容</span>
+          {/* Tech decoration at top */}
+          <div className="flex justify-center mb-8">
+            <div className="flex items-center gap-2">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-cyan-400"></div>
+              <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+              <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" style={{animationDelay: '0.3s'}}></div>
+              <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" style={{animationDelay: '0.6s'}}></div>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-purple-400"></div>
+            </div>
+          </div>
+
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black mb-8 text-white drop-shadow-2xl">
+            <span className="inline-block">カリキュラム</span><span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent whitespace-nowrap animate-gradient bg-[length:200%_auto]">内容</span>
           </h2>
         </div>
 
@@ -44,7 +68,7 @@ export default function CurriculumSection() {
             {activeTab === 'basic' && (
               <div className="space-y-8">
                 <div className="text-center mb-8">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-4">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-4">
                     <span className="whitespace-nowrap">基礎カリキュラム</span>
                   </h3>
                   <p className="text-gray-300 text-xs sm:text-sm md:text-base px-2">実務で即使えるスキルを段階的に習得</p>
@@ -52,7 +76,7 @@ export default function CurriculumSection() {
 
                 <div className="space-y-6">
                   <div className="bg-cyan-500/10 rounded-2xl p-6 border border-cyan-500/20">
-                    <h4 className="text-base sm:text-lg md:text-xl font-bold mb-4 text-cyan-400">
+                    <h4 className="text-base sm:text-lg md:text-xl font-black mb-4 text-cyan-400">
                       <i className="fas fa-brain mr-3"></i><span className="whitespace-nowrap">AI×プロンプト設計</span>
                     </h4>
                     <p className="text-gray-300 mb-4 text-xs sm:text-sm md:text-base px-2">
@@ -64,7 +88,7 @@ export default function CurriculumSection() {
                   </div>
 
                   <div className="bg-cyan-500/10 rounded-2xl p-6 border border-cyan-500/20">
-                    <h4 className="text-base sm:text-lg md:text-xl font-bold mb-4 text-cyan-400">
+                    <h4 className="text-base sm:text-lg md:text-xl font-black mb-4 text-cyan-400">
                       <i className="fas fa-cog mr-3"></i><span className="whitespace-nowrap">GASで業務自動化</span>
                     </h4>
                     <p className="text-gray-300 mb-4 text-xs sm:text-sm md:text-base px-2">
@@ -76,7 +100,7 @@ export default function CurriculumSection() {
                   </div>
 
                   <div className="bg-cyan-500/10 rounded-2xl p-6 border border-cyan-500/20">
-                    <h4 className="text-base sm:text-lg md:text-xl font-bold mb-4 text-cyan-400">
+                    <h4 className="text-base sm:text-lg md:text-xl font-black mb-4 text-cyan-400">
                       <i className="fas fa-spider mr-3"></i><span className="whitespace-nowrap">スクレイピング→可視化</span>
                     </h4>
                     <p className="text-gray-300 mb-4 text-xs sm:text-sm md:text-base px-2">
@@ -93,7 +117,7 @@ export default function CurriculumSection() {
             {activeTab === 'specialized' && (
               <div className="space-y-8">
                 <div className="text-center mb-8">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-4">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-4">
                     <span className="whitespace-nowrap">専門分野カリキュラム</span>
                   </h3>
                   <p className="text-gray-300 text-xs sm:text-sm md:text-base px-2">実際のビジネスシーンで活用できる専門知識</p>
@@ -101,7 +125,7 @@ export default function CurriculumSection() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="bg-cyan-500/10 rounded-2xl p-6 border border-cyan-500/20">
-                    <h4 className="text-base sm:text-lg font-bold mb-4 text-cyan-400">
+                    <h4 className="text-base sm:text-lg font-black mb-4 text-cyan-400">
                       <i className="fas fa-calculator mr-3"></i><span className="whitespace-nowrap">経理×AI</span>
                     </h4>
                     <ul className="space-y-2 text-xs sm:text-sm text-gray-300 px-2">
@@ -113,7 +137,7 @@ export default function CurriculumSection() {
                   </div>
 
                   <div className="bg-cyan-500/10 rounded-2xl p-6 border border-cyan-500/20">
-                    <h4 className="text-base sm:text-lg font-bold mb-4 text-cyan-400">
+                    <h4 className="text-base sm:text-lg font-black mb-4 text-cyan-400">
                       <i className="fas fa-exchange-alt mr-3"></i><span className="whitespace-nowrap">転売×AI</span>
                     </h4>
                     <ul className="space-y-2 text-xs sm:text-sm text-gray-300 px-2">
@@ -125,7 +149,7 @@ export default function CurriculumSection() {
                   </div>
 
                   <div className="bg-cyan-500/10 rounded-2xl p-6 border border-cyan-500/20">
-                    <h4 className="text-base sm:text-lg font-bold mb-4 text-cyan-400">
+                    <h4 className="text-base sm:text-lg font-black mb-4 text-cyan-400">
                       <i className="fas fa-bullhorn mr-3"></i><span className="whitespace-nowrap">アフィリエイト×AI</span>
                     </h4>
                     <ul className="space-y-2 text-xs sm:text-sm text-gray-300 px-2">
@@ -137,7 +161,7 @@ export default function CurriculumSection() {
                   </div>
 
                   <div className="bg-cyan-500/10 rounded-2xl p-6 border border-cyan-500/20">
-                    <h4 className="text-base sm:text-lg font-bold mb-4 text-cyan-400">
+                    <h4 className="text-base sm:text-lg font-black mb-4 text-cyan-400">
                       <i className="fas fa-chart-line mr-3"></i><span className="whitespace-nowrap">その他の分野</span>
                     </h4>
                     <ul className="space-y-2 text-xs sm:text-sm text-gray-300 px-2">

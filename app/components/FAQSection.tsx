@@ -29,11 +29,35 @@ export default function FAQSection() {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-gray-800">
-      <div className="container mx-auto px-6">
+    <section id="faq" className="relative py-20 bg-gray-800 overflow-hidden">
+      {/* Tech grid overlay */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px)`,
+          backgroundSize: '50px 50px',
+          opacity: 0.02
+        }}></div>
+      </div>
+
+      {/* Animated glow effects */}
+      <div className="absolute top-40 left-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse pointer-events-none z-0"></div>
+      <div className="absolute bottom-40 right-1/4 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl animate-pulse pointer-events-none z-0" style={{animationDelay: '2s'}}></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 fade-in">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-white">
-            <span className="inline-block">よくある</span><span className="bg-gradient-to-r from-cyan-400 to-cyan-500 bg-clip-text text-transparent whitespace-nowrap">質問</span>
+          {/* Tech decoration at top */}
+          <div className="flex justify-center mb-8">
+            <div className="flex items-center gap-2">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-cyan-400"></div>
+              <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+              <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" style={{animationDelay: '0.3s'}}></div>
+              <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" style={{animationDelay: '0.6s'}}></div>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-purple-400"></div>
+            </div>
+          </div>
+
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black mb-8 text-white drop-shadow-2xl">
+            <span className="inline-block">よくある</span><span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent whitespace-nowrap animate-gradient bg-[length:200%_auto]">質問</span>
           </h2>
         </div>
         
@@ -45,7 +69,7 @@ export default function FAQSection() {
                 className="w-full px-6 py-4 text-left hover:bg-gray-800 transition-colors duration-200"
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm sm:text-base md:text-lg font-semibold text-white pr-4">{faq.question}</h3>
+                  <h3 className="text-sm sm:text-base md:text-lg font-black text-white pr-4">{faq.question}</h3>
                   <i className={`fas fa-chevron-${openFaq === index ? 'up' : 'down'} text-cyan-400 transition-transform duration-200`}></i>
                 </div>
               </button>

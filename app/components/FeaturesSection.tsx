@@ -2,11 +2,35 @@
 
 export default function FeaturesSection() {
   return (
-    <section id="features" className="py-20 bg-gradient-to-b from-gray-900 to-black">
-      <div className="container mx-auto px-6">
+    <section id="features" className="relative py-20 bg-gradient-to-b from-gray-900 to-black overflow-hidden">
+      {/* Tech grid overlay */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px)`,
+          backgroundSize: '50px 50px',
+          opacity: 0.02
+        }}></div>
+      </div>
+
+      {/* Animated glow effects */}
+      <div className="absolute top-40 left-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse pointer-events-none z-0"></div>
+      <div className="absolute bottom-40 right-1/4 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl animate-pulse pointer-events-none z-0" style={{animationDelay: '2s'}}></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16 fade-in">
-          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-8 text-white">
-            <span className="inline-block">サロンの</span><span className="text-cyan-400 whitespace-nowrap">3つの特徴</span>
+          {/* Tech decoration at top */}
+          <div className="flex justify-center mb-8">
+            <div className="flex items-center gap-2">
+              <div className="h-px w-12 bg-gradient-to-r from-transparent to-cyan-400"></div>
+              <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+              <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" style={{animationDelay: '0.3s'}}></div>
+              <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" style={{animationDelay: '0.6s'}}></div>
+              <div className="h-px w-12 bg-gradient-to-l from-transparent to-purple-400"></div>
+            </div>
+          </div>
+
+          <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black mb-8 text-white drop-shadow-2xl">
+            <span className="inline-block">サロンの</span><span className="bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent whitespace-nowrap animate-gradient bg-[length:200%_auto]">3つの特徴</span>
           </h2>
         </div>
 
@@ -17,7 +41,7 @@ export default function FeaturesSection() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-cyan-900/50 border border-cyan-400/50 rounded-full text-cyan-400 text-xl font-bold mb-6">
                 1
               </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-6 text-white">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black mb-6 text-white">
                 <span className="whitespace-nowrap">AI・生成AI専門</span><span className="whitespace-nowrap">カリキュラム</span>
               </h3>
               <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 mb-6 leading-relaxed px-2">
@@ -61,7 +85,7 @@ export default function FeaturesSection() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-900/50 border border-blue-400/50 rounded-full text-blue-400 text-xl font-bold mb-6">
                 2
               </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-6 text-white">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black mb-6 text-white">
                 <span className="whitespace-nowrap">本格プログラミング</span><span className="whitespace-nowrap">実装</span>
               </h3>
               <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 mb-6 leading-relaxed px-2">
@@ -115,7 +139,7 @@ export default function FeaturesSection() {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-900/50 border border-purple-400/50 rounded-full text-purple-400 text-xl font-bold mb-6">
                 3
               </div>
-              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-6 text-white">
+              <h3 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black mb-6 text-white">
                 <span className="whitespace-nowrap">コミュニティ</span><span className="whitespace-nowrap">学習環境</span>
               </h3>
               <p className="text-xs sm:text-sm md:text-base lg:text-lg text-gray-300 mb-6 leading-relaxed px-2">
