@@ -32,8 +32,7 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
     setTimeout(() => {
       // 最後の質問の場合は完了
       if (currentQuestion.nextQuestion === null) {
-        // 最後の質問の場合は、アニメーション完了後に即座に遷移
-        setIsAnimating(false);
+        // 最後の質問の場合は、アニメーション状態を維持したまま遷移
         onComplete();
       } else {
         // 次の質問へ進む
@@ -136,19 +135,19 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
 
         {/* 質問エリア */}
         <div className={`relative z-10 max-w-7xl mx-auto text-center transition-all duration-500 ${isAnimating ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
-          <div className="mb-12">
-            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
+          <div className="mb-10 px-6">
+            <h1 className="question-title font-bold text-white mb-2 leading-tight">
               {currentQuestion.question}
             </h1>
             {currentQuestion.subtext && (
-              <p className="text-xl text-gray-300 mt-4">
+              <p className="question-subtext text-gray-300 mt-2 leading-relaxed whitespace-pre-line">
                 {currentQuestion.subtext}
               </p>
             )}
           </div>
 
           {/* 選択肢カード */}
-          <div className="grid grid-cols-2 gap-3 md:gap-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 gap-3 md:gap-8 max-w-3xl mx-auto px-2">
             {currentQuestion.options.map((option) => {
               const isSelected = selectedAnswer === option.value;
               const shouldHide = selectedAnswer !== null && !isSelected;
@@ -158,31 +157,40 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
                   key={option.value}
                   onClick={() => handleAnswer(option.value)}
                   disabled={isAnimating}
-                  className={`group relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-10 transition-all duration-500 min-h-[260px] md:min-h-[320px] flex flex-col
+                  className={`group relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 md:p-10 transition-all duration-500 h-[260px] md:h-[320px] flex flex-col
                     ${isSelected ? 'scale-110 bg-gradient-to-br from-cyan-500/30 to-blue-600/30 border-cyan-400 shadow-2xl shadow-cyan-500/50' : ''}
                     ${shouldHide ? 'opacity-0 scale-95 pointer-events-none' : ''}
                     ${!isAnimating && !isSelected ? 'hover:bg-white/20 hover:border-cyan-500/50 hover:scale-105 hover:-translate-y-2' : ''}
                     ${isAnimating ? 'cursor-not-allowed' : 'cursor-pointer'}
                   `}
                 >
-                  <div className="flex flex-col items-center text-center h-full justify-center">
+                  <div className="flex flex-col items-center text-center h-full w-full px-1">
+                    {/* アイコン - 固定位置 */}
                     <div className={`flex items-center justify-center w-14 h-14 md:w-20 md:h-20 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl mb-4 md:mb-6 flex-shrink-0 transition-all duration-500
                       ${isSelected ? 'scale-125 shadow-lg shadow-cyan-500/50' : ''}
                     `}>
                       <span className="text-2xl md:text-4xl font-bold text-white">{option.value}</span>
                     </div>
-                    <h3 className={`text-sm md:text-lg font-bold text-white mb-3 md:mb-4 leading-snug whitespace-pre-line transition-all duration-500
-                      ${isSelected ? 'text-cyan-300' : ''}
-                    `}>
-                      {option.label}
-                    </h3>
-                    {option.description && (
-                      <p className={`text-xs md:text-sm text-gray-300 leading-relaxed whitespace-pre-line transition-all duration-500
-                        ${isSelected ? 'text-gray-200' : ''}
+
+                    {/* ラベル - 固定高さ（2行分） */}
+                    <div className="option-label-container flex items-center justify-center mb-2 md:mb-4">
+                      <h3 className={`option-label font-bold text-white leading-[1.3] whitespace-pre-line transition-all duration-500 w-full
+                        ${isSelected ? 'text-cyan-300' : ''}
                       `}>
-                        {option.description}
-                      </p>
-                    )}
+                        {option.label}
+                      </h3>
+                    </div>
+
+                    {/* 説明テキスト - 固定高さ（2行分） */}
+                    <div className="option-description-container flex items-center justify-center">
+                      {option.description && (
+                        <p className={`option-description text-gray-300 leading-[1.4] whitespace-pre-line transition-all duration-500 w-full
+                          ${isSelected ? 'text-gray-200' : ''}
+                        `}>
+                          {option.description}
+                        </p>
+                      )}
+                    </div>
                   </div>
                 </button>
               );

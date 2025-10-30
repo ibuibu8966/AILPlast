@@ -27,7 +27,7 @@ export const sectionQuestions: Record<string, QuestionWithSection> = {
       },
       {
         value: 'B',
-        label: '何から始めればいいか\nわからない',
+        label: '何から始めればいいかわからない',
         description: 'プログラミングに興味はあるけど、\n最初の一歩が踏み出せない'
       }
     ],
@@ -38,7 +38,7 @@ export const sectionQuestions: Record<string, QuestionWithSection> = {
   q2: {
     id: 'q2',
     question: 'AIを活用する世界に飛び込みたいですか？',
-    subtext: '時代の転換点に立つ今、準備をするか否かで大きな差が生まれています。',
+    subtext: '時代の転換点に立つ今、\n準備をするか否かで大きな差が生まれています。',
     options: [
       {
         value: 'A',
@@ -58,7 +58,7 @@ export const sectionQuestions: Record<string, QuestionWithSection> = {
   q3: {
     id: 'q3',
     question: 'AIを使って何ができるようになりたいですか？',
-    subtext: 'すでに使える業務効率化から、本格的な自動化システム構築まで',
+    subtext: 'すでに使える業務効率化から、\n本格的な自動化システム構築まで',
     options: [
       {
         value: 'A',
@@ -78,7 +78,7 @@ export const sectionQuestions: Record<string, QuestionWithSection> = {
   q4: {
     id: 'q4',
     question: 'このサロンに入ってどう変わりたいですか？',
-    subtext: '30日後、90日後のあなたは今とは全く違うレベルに到達します',
+    subtext: '30日後、\n90日後のあなたは今とは全く違うレベルに到達します',
     options: [
       {
         value: 'A',

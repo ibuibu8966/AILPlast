@@ -224,6 +224,14 @@ html {
   .text-4xl { font-size: 3rem; }
   .text-5xl { font-size: 3.75rem; }
   .text-6xl { font-size: 4.5rem; }
+
+  /* Question flow specific */
+  .question-title { font-size: 3rem; }
+  .question-subtext { font-size: 1.25rem; }
+  .option-label { font-size: 1.125rem; }
+  .option-description { font-size: 0.875rem; }
+  .option-label-container { height: auto; }
+  .option-description-container { height: auto; }
 }
 
 /* Tablet screens (768px) */
@@ -238,9 +246,25 @@ html {
   .text-4xl { font-size: 2.25rem; }
   .text-5xl { font-size: 2.75rem; }
   .text-6xl { font-size: 3.5rem; }
-  
+
   h1, h2, h3 { line-height: 1.2; }
   p { line-height: 1.5; }
+
+  /* Question flow specific - default mobile */
+  .question-title { font-size: 1.125rem; }
+  .question-subtext { font-size: 0.75rem; }
+  .option-label {
+    font-size: 0.75rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .option-description {
+    font-size: 0.625rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .option-label-container { height: 36px; }
+  .option-description-container { height: 36px; }
 }
 
 /* Large mobile screens (428px) */
@@ -255,10 +279,26 @@ html {
   .text-4xl { font-size: 1.75rem; line-height: 1.2; }
   .text-5xl { font-size: 2rem; line-height: 1.2; }
   .text-6xl { font-size: 2.25rem; line-height: 1.2; }
-  
+
   .px-6 { padding-left: 1.25rem; padding-right: 1.25rem; }
   .px-8 { padding-left: 1.75rem; padding-right: 1.75rem; }
   .py-20 { padding-top: 3.5rem; padding-bottom: 3.5rem; }
+
+  /* Question flow specific */
+  .question-title { font-size: 1rem; }
+  .question-subtext { font-size: 0.7rem; }
+  .option-label {
+    font-size: 0.7rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .option-description {
+    font-size: 0.625rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .option-label-container { height: 36px; }
+  .option-description-container { height: 36px; }
 }
 
 /* Medium mobile screens (375px) */
@@ -273,10 +313,26 @@ html {
   .text-4xl { font-size: 1.6rem; line-height: 1.2; }
   .text-5xl { font-size: 1.85rem; line-height: 1.2; }
   .text-6xl { font-size: 2rem; line-height: 1.2; }
-  
+
   .px-6 { padding-left: 1rem; padding-right: 1rem; }
   .px-8 { padding-left: 1.5rem; padding-right: 1.5rem; }
   .py-20 { padding-top: 3rem; padding-bottom: 3rem; }
+
+  /* Question flow specific */
+  .question-title { font-size: 0.95rem; }
+  .question-subtext { font-size: 0.65rem; }
+  .option-label {
+    font-size: 0.65rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .option-description {
+    font-size: 0.6rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .option-label-container { height: 36px; }
+  .option-description-container { height: 36px; }
 }
 
 /* Small mobile screens (320px) */
@@ -291,16 +347,32 @@ html {
   .text-4xl { font-size: 1.4rem; line-height: 1.2; }
   .text-5xl { font-size: 1.6rem; line-height: 1.2; }
   .text-6xl { font-size: 1.75rem; line-height: 1.2; }
-  
+
   .px-6 { padding-left: 0.75rem; padding-right: 0.75rem; }
   .px-8 { padding-left: 1.25rem; padding-right: 1.25rem; }
   .py-20 { padding-top: 2.5rem; padding-bottom: 2.5rem; }
-  
+
   /* Prevent text wrapping for headings */
   h1, h2, h3, h4, h5, h6 {
     word-break: keep-all;
     overflow-wrap: break-word;
   }
+
+  /* Question flow specific */
+  .question-title { font-size: 0.875rem; }
+  .question-subtext { font-size: 0.6rem; }
+  .option-label {
+    font-size: 0.6rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .option-description {
+    font-size: 0.55rem;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+  .option-label-container { height: 36px; }
+  .option-description-container { height: 36px; }
 }
 
 /* Common responsive utilities */
