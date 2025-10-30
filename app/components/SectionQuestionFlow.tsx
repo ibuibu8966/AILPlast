@@ -240,7 +240,7 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
 
   // 質問画面
   return (
-    <div className="min-h-screen relative flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen relative flex flex-col items-center justify-center px-4 overflow-hidden">
       {/* 背景動画 */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <video
@@ -252,35 +252,91 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
           loop
           playsInline
         />
-        <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-gradient-to-b from-blue-900/50 via-black/80 to-cyan-900/50" />
       </div>
+
+      {/* Tech grid overlay */}
+      <div className="absolute inset-0 z-[1]">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px)`,
+          backgroundSize: '50px 50px',
+          opacity: 0.03
+        }}></div>
+      </div>
+
+      {/* Animated tech elements */}
+      <div className="absolute inset-0 z-[2] pointer-events-none">
+        {/* Floating tech shapes */}
+        <div className="absolute top-20 right-20 w-32 h-32 border-2 border-cyan-400/30 rounded-lg transform rotate-45 floating hidden lg:block"></div>
+        <div className="absolute bottom-20 left-20 w-24 h-24 border-2 border-blue-400/30 rounded-lg transform rotate-12 floating-reverse hidden lg:block"></div>
+        <div className="absolute top-1/3 left-1/4 w-20 h-20 border border-cyan-300/20 rounded-full floating hidden lg:block" style={{animationDelay: '2s'}}></div>
+
+        {/* Tech circles */}
+        <div className="absolute top-40 right-1/4 hidden lg:block">
+          <div className="relative w-32 h-32">
+            <div className="absolute inset-0 border-2 border-cyan-400/20 rounded-full animate-pulse"></div>
+            <div className="absolute inset-4 border border-cyan-400/10 rounded-full animate-pulse" style={{animationDelay: '0.5s'}}></div>
+          </div>
+        </div>
+      </div>
+
+      {/* Animated glow effects */}
+      <div className="absolute top-20 left-1/4 w-96 h-96 bg-cyan-400/10 rounded-full blur-3xl animate-pulse pointer-events-none z-[1]"></div>
+      <div className="absolute bottom-20 right-1/4 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl animate-pulse pointer-events-none z-[1]" style={{animationDelay: '2s'}}></div>
 
       {/* 進捗インジケーター */}
       <div className="absolute top-8 left-0 right-0 z-10">
         <div className="max-w-md mx-auto px-4">
-          <div className="flex items-center justify-between mb-2">
-            <span className="text-gray-400 text-sm">質問 {progress} / 6</span>
-            <span className="text-gray-400 text-sm">{Math.round((progress / 6) * 100)}%</span>
-          </div>
-          <div className="w-full bg-gray-800 rounded-full h-2">
-            <div
-              className="bg-gradient-to-r from-cyan-500 to-blue-600 h-2 rounded-full transition-all duration-500"
-              style={{ width: `${(progress / 6) * 100}%` }}
-            />
+          <div className="relative">
+            {/* Tech decoration around progress bar */}
+            <div className="absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-cyan-400 animate-pulse hidden md:block"></div>
+            <div className="absolute -right-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-blue-400 animate-pulse hidden md:block" style={{animationDelay: '0.5s'}}></div>
+
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-cyan-300 text-sm font-bold tracking-wider">質問 {progress} / 6</span>
+              <span className="text-cyan-300 text-sm font-bold">{Math.round((progress / 6) * 100)}%</span>
+            </div>
+            <div className="relative w-full bg-gray-900/80 backdrop-blur-sm rounded-full h-3 border border-cyan-400/30 shadow-lg overflow-hidden">
+              {/* Inner glow */}
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10"></div>
+
+              <div
+                className="relative bg-gradient-to-r from-cyan-500 via-blue-600 to-cyan-500 bg-[length:200%_auto] h-3 rounded-full transition-all duration-500 shadow-lg shadow-cyan-500/50 animate-gradient"
+                style={{ width: `${(progress / 6) * 100}%` }}
+              >
+                {/* Shine effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-pulse"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
         {/* 質問エリア */}
         <div className={`relative z-10 max-w-7xl mx-auto text-center transition-all duration-500 ${isAnimating ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
-          <div className="mb-10 px-6">
-            <h1 className="question-title font-bold text-white mb-2 leading-tight">
+          <div className="relative mb-10 px-6">
+            {/* Tech decoration at top of question */}
+            <div className="flex justify-center mb-6">
+              <div className="flex items-center gap-2">
+                <div className="h-px w-8 bg-gradient-to-r from-transparent to-cyan-400"></div>
+                <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
+                <div className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" style={{animationDelay: '0.3s'}}></div>
+                <div className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" style={{animationDelay: '0.6s'}}></div>
+                <div className="h-px w-8 bg-gradient-to-l from-transparent to-purple-400"></div>
+              </div>
+            </div>
+
+            <h1 className="question-title font-black text-white mb-2 leading-tight drop-shadow-2xl bg-gradient-to-r from-white via-cyan-100 to-white bg-clip-text">
               {currentQuestion.question}
             </h1>
             {currentQuestion.subtext && (
-              <p className="question-subtext text-gray-300 mt-2 leading-relaxed whitespace-pre-line">
-                {currentQuestion.subtext}
-              </p>
+              <div className="relative inline-block">
+                <p className="question-subtext text-gray-200 mt-2 leading-relaxed whitespace-pre-line font-medium">
+                  {currentQuestion.subtext}
+                </p>
+                {/* Underline decoration */}
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-20 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent"></div>
+              </div>
             )}
           </div>
 
@@ -291,29 +347,72 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
               const shouldHide = selectedAnswer !== null && !isSelected;
 
               return (
-                <button
-                  key={option.value}
-                  onClick={() => handleAnswer(option.value)}
-                  disabled={isAnimating}
-                  className={`group relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 md:p-10 transition-all duration-500 h-[260px] md:h-[320px] flex flex-col
-                    ${isSelected ? 'scale-110 bg-gradient-to-br from-cyan-500/30 to-blue-600/30 border-cyan-400 shadow-2xl shadow-cyan-500/50' : ''}
-                    ${shouldHide ? 'opacity-0 scale-95 pointer-events-none' : ''}
-                    ${!isAnimating && !isSelected ? 'hover:bg-white/20 hover:border-cyan-500/50 hover:scale-105 hover:-translate-y-2' : ''}
-                    ${isAnimating ? 'cursor-not-allowed' : 'cursor-pointer'}
-                  `}
-                >
-                  <div className="flex flex-col items-center text-center h-full w-full px-1">
-                    {/* アイコン - 固定位置 */}
-                    <div className={`flex items-center justify-center w-14 h-14 md:w-20 md:h-20 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl mb-4 md:mb-6 flex-shrink-0 transition-all duration-500
-                      ${isSelected ? 'scale-125 shadow-lg shadow-cyan-500/50' : ''}
-                    `}>
-                      <span className="text-2xl md:text-4xl font-bold text-white">{option.value}</span>
-                    </div>
+                <div key={option.value} className="relative group">
+                  {/* Multiple glow layers */}
+                  <div className={`absolute -inset-2 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-3xl blur-lg transition-opacity duration-1000
+                    ${isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}
+                  `}></div>
+                  <div className={`absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl blur transition-opacity duration-1000
+                    ${isSelected ? 'opacity-75' : 'opacity-0 group-hover:opacity-30'}
+                  `}></div>
+
+                  {/* Decorative frame */}
+                  <div className={`absolute -inset-3 border border-cyan-400/20 rounded-3xl transition-opacity duration-500
+                    ${isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
+                  `}></div>
+
+                  <button
+                    onClick={() => handleAnswer(option.value)}
+                    disabled={isAnimating}
+                    className={`relative w-full bg-gradient-to-br from-gray-900/90 via-black/90 to-gray-900/90 backdrop-blur-xl border-2 rounded-3xl p-4 md:p-10 transition-all duration-500 h-[260px] md:h-[320px] flex flex-col overflow-hidden
+                      ${isSelected ? 'scale-105 border-cyan-400 shadow-2xl shadow-cyan-500/50' : 'border-cyan-400/30'}
+                      ${shouldHide ? 'opacity-0 scale-95 pointer-events-none' : ''}
+                      ${!isAnimating && !isSelected ? 'hover:border-cyan-500/50 hover:scale-105 hover:-translate-y-2' : ''}
+                      ${isAnimating ? 'cursor-not-allowed' : 'cursor-pointer'}
+                    `}
+                  >
+                    {/* Top glow line */}
+                    <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent transition-opacity duration-500
+                      ${isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
+                    `}></div>
+
+                    {/* Inner glow effect */}
+                    <div className={`absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 transition-opacity duration-500
+                      ${isSelected ? 'opacity-100' : 'opacity-0'}
+                    `}></div>
+
+                    <div className="relative flex flex-col items-center text-center h-full w-full px-1">
+                      {/* アイコン - 固定位置 */}
+                      <div className="relative mb-4 md:mb-6 flex-shrink-0">
+                        {/* Pulse rings */}
+                        <div className={`absolute -inset-4 border-2 border-cyan-400/30 rounded-2xl transition-opacity duration-500
+                          ${isSelected ? 'opacity-100 animate-pulse' : 'opacity-0 group-hover:opacity-100'}
+                        `}></div>
+                        <div className={`absolute -inset-6 border border-cyan-400/20 rounded-2xl transition-opacity duration-500
+                          ${isSelected ? 'opacity-100 animate-pulse' : 'opacity-0 group-hover:opacity-100'}
+                        `} style={{animationDelay: '0.5s'}}></div>
+
+                        {/* Icon glow */}
+                        <div className={`absolute inset-0 bg-cyan-500 rounded-2xl blur-xl transition-opacity duration-500
+                          ${isSelected ? 'opacity-50 animate-pulse' : 'opacity-0'}
+                        `}></div>
+
+                        <div className={`relative flex items-center justify-center w-14 h-14 md:w-20 md:h-20 bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl transition-all duration-500 shadow-lg
+                          ${isSelected ? 'scale-125 shadow-cyan-500/50' : 'shadow-cyan-500/20'}
+                        `}>
+                          <span className="text-2xl md:text-4xl font-black text-white">{option.value}</span>
+
+                          {/* Sparkle */}
+                          <div className={`absolute -top-1 -right-1 w-2 h-2 bg-cyan-400 rounded-full transition-opacity duration-500
+                            ${isSelected ? 'opacity-100 animate-ping' : 'opacity-0'}
+                          `}></div>
+                        </div>
+                      </div>
 
                     {/* ラベル - 固定高さ（2行分） */}
                     <div className="option-label-container flex items-center justify-center mb-2 md:mb-4">
-                      <h3 className={`option-label font-bold text-white leading-[1.3] whitespace-pre-line transition-all duration-500 w-full
-                        ${isSelected ? 'text-cyan-300' : ''}
+                      <h3 className={`option-label font-black leading-[1.3] whitespace-pre-line transition-all duration-500 w-full
+                        ${isSelected ? 'text-cyan-300 drop-shadow-lg' : 'text-white'}
                       `}>
                         {option.label}
                       </h3>
@@ -322,15 +421,21 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
                     {/* 説明テキスト - 固定高さ（2行分） */}
                     <div className="option-description-container flex items-center justify-center">
                       {option.description && (
-                        <p className={`option-description text-gray-300 leading-[1.4] whitespace-pre-line transition-all duration-500 w-full
-                          ${isSelected ? 'text-gray-200' : ''}
+                        <p className={`option-description leading-[1.4] whitespace-pre-line transition-all duration-500 w-full
+                          ${isSelected ? 'text-gray-100 font-medium' : 'text-gray-300'}
                         `}>
                           {option.description}
                         </p>
                       )}
                     </div>
+
+                    {/* Bottom decoration line (only when selected) */}
+                    <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent transition-opacity duration-500
+                      ${isSelected ? 'opacity-100' : 'opacity-0'}
+                    `}></div>
                   </div>
                 </button>
+              </div>
               );
             })}
           </div>
