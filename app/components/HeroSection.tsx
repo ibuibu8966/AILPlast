@@ -68,14 +68,26 @@ export default function HeroSection() {
           </div>
 
           {/* CTA Button */}
-          <div className="mb-12">
+          <div className="mb-12 relative">
+            {/* Button glow effect */}
+            <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full blur-xl opacity-50 group-hover:opacity-75 transition-opacity"></div>
+
             <button
               onClick={() => router.push('/contact')}
-              className="group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-sm sm:text-base md:text-lg font-bold rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-cyan-500/50"
+              className="group relative inline-flex items-center gap-2 sm:gap-3 bg-gradient-to-r from-cyan-500 via-blue-600 to-cyan-500 bg-[length:200%_auto] text-white px-8 sm:px-10 md:px-14 py-4 sm:py-5 md:py-6 text-sm sm:text-base md:text-lg font-black rounded-full overflow-hidden transform hover:scale-110 transition-all duration-500 shadow-2xl hover:shadow-cyan-500/50 border-2 border-cyan-400/30"
             >
+              {/* Animated gradient background */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 via-cyan-500 to-blue-600 bg-[length:200%_auto] opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-gradient"></div>
+
+              {/* Shine effect */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+
               <span className="relative z-10">今すぐ始める</span>
               <i className="fas fa-arrow-right relative z-10 group-hover:translate-x-1 transition-transform"></i>
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+              {/* Sparkles */}
+              <div className="absolute top-1 right-8 w-1 h-1 bg-white rounded-full animate-ping"></div>
+              <div className="absolute bottom-1 left-8 w-1 h-1 bg-white rounded-full animate-ping" style={{animationDelay: '0.5s'}}></div>
             </button>
           </div>
 
