@@ -232,6 +232,12 @@ html {
   .option-description { font-size: 0.875rem; }
   .option-label-container { height: auto; }
   .option-description-container { height: auto; }
+
+  /* Welcome screen specific */
+  .welcome-title { font-size: 3.75rem; }
+  .welcome-subtitle { font-size: 1.875rem; }
+  .welcome-text { font-size: 1.5rem; }
+  .welcome-button { font-size: 1.25rem; }
 }
 
 /* Tablet screens (768px) */
@@ -265,6 +271,12 @@ html {
   }
   .option-label-container { height: 36px; }
   .option-description-container { height: 36px; }
+
+  /* Welcome screen specific */
+  .welcome-title { font-size: 1.875rem; }
+  .welcome-subtitle { font-size: 1.25rem; }
+  .welcome-text { font-size: 1rem; }
+  .welcome-button { font-size: 1rem; }
 }
 
 /* Large mobile screens (428px) */
@@ -299,6 +311,12 @@ html {
   }
   .option-label-container { height: 36px; }
   .option-description-container { height: 36px; }
+
+  /* Welcome screen specific */
+  .welcome-title { font-size: 1.75rem; }
+  .welcome-subtitle { font-size: 1.125rem; }
+  .welcome-text { font-size: 0.9rem; }
+  .welcome-button { font-size: 0.9rem; }
 }
 
 /* Medium mobile screens (375px) */
@@ -333,6 +351,12 @@ html {
   }
   .option-label-container { height: 36px; }
   .option-description-container { height: 36px; }
+
+  /* Welcome screen specific */
+  .welcome-title { font-size: 1.5rem; }
+  .welcome-subtitle { font-size: 1rem; }
+  .welcome-text { font-size: 0.85rem; }
+  .welcome-button { font-size: 0.85rem; }
 }
 
 /* Small mobile screens (320px) */
@@ -373,6 +397,12 @@ html {
   }
   .option-label-container { height: 36px; }
   .option-description-container { height: 36px; }
+
+  /* Welcome screen specific */
+  .welcome-title { font-size: 1.4rem; }
+  .welcome-subtitle { font-size: 0.95rem; }
+  .welcome-text { font-size: 0.8rem; }
+  .welcome-button { font-size: 0.8rem; }
 }
 
 /* Common responsive utilities */
