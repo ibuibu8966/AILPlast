@@ -32,13 +32,15 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
     setTimeout(() => {
       // 最後の質問の場合は完了
       if (currentQuestion.nextQuestion === null) {
+        // 最後の質問の場合は、アニメーション完了後に即座に遷移
+        setIsAnimating(false);
         onComplete();
       } else {
         // 次の質問へ進む
         setCurrentQuestionIndex(currentQuestionIndex + 1);
         setSelectedAnswer(null);
+        setIsAnimating(false);
       }
-      setIsAnimating(false);
     }, 1000);
   };
 
@@ -146,7 +148,7 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
           </div>
 
           {/* 選択肢カード */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid grid-cols-2 gap-3 md:gap-8 max-w-3xl mx-auto">
             {currentQuestion.options.map((option) => {
               const isSelected = selectedAnswer === option.value;
               const shouldHide = selectedAnswer !== null && !isSelected;
@@ -156,7 +158,7 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
                   key={option.value}
                   onClick={() => handleAnswer(option.value)}
                   disabled={isAnimating}
-                  className={`group relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 md:p-10 transition-all duration-500 min-h-[280px] md:min-h-[320px] flex flex-col
+                  className={`group relative bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-5 md:p-10 transition-all duration-500 min-h-[260px] md:min-h-[320px] flex flex-col
                     ${isSelected ? 'scale-110 bg-gradient-to-br from-cyan-500/30 to-blue-600/30 border-cyan-400 shadow-2xl shadow-cyan-500/50' : ''}
                     ${shouldHide ? 'opacity-0 scale-95 pointer-events-none' : ''}
                     ${!isAnimating && !isSelected ? 'hover:bg-white/20 hover:border-cyan-500/50 hover:scale-105 hover:-translate-y-2' : ''}
@@ -164,12 +166,12 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
                   `}
                 >
                   <div className="flex flex-col items-center text-center h-full justify-center">
-                    <div className={`flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl mb-5 md:mb-6 flex-shrink-0 transition-all duration-500
+                    <div className={`flex items-center justify-center w-14 h-14 md:w-20 md:h-20 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl mb-4 md:mb-6 flex-shrink-0 transition-all duration-500
                       ${isSelected ? 'scale-125 shadow-lg shadow-cyan-500/50' : ''}
                     `}>
-                      <span className="text-3xl md:text-4xl font-bold text-white">{option.value}</span>
+                      <span className="text-2xl md:text-4xl font-bold text-white">{option.value}</span>
                     </div>
-                    <h3 className={`text-base md:text-lg font-bold text-white mb-3 md:mb-4 leading-snug transition-all duration-500
+                    <h3 className={`text-sm md:text-lg font-bold text-white mb-3 md:mb-4 leading-snug whitespace-pre-line transition-all duration-500
                       ${isSelected ? 'text-cyan-300' : ''}
                     `}>
                       {option.label}
