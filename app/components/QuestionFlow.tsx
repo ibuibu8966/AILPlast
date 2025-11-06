@@ -177,17 +177,37 @@ export default function QuestionFlow({ onComplete, hideHeader, setHideHeader, in
           <button
             onClick={() => handleAnswer('yes')}
             disabled={isAnimating}
-            className="px-12 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold text-xl rounded-full hover:from-cyan-600 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+            className="relative overflow-hidden px-12 py-4 text-white font-bold text-xl rounded-full transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{
+              backgroundImage: currentQuestion.backgroundImages?.yes
+                ? `url('${currentQuestion.backgroundImages.yes}')`
+                : undefined,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
           >
-            はい
+            {currentQuestion.backgroundImages?.yes && (
+              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/50 to-blue-600/50 hover:from-cyan-600/60 hover:to-blue-700/60 transition-all duration-300" />
+            )}
+            <span className="relative z-10">はい</span>
           </button>
 
           <button
             onClick={() => handleAnswer('no')}
             disabled={isAnimating}
-            className="px-12 py-4 bg-gradient-to-r from-gray-600 to-gray-700 text-white font-bold text-xl rounded-full hover:from-gray-700 hover:to-gray-800 transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+            className="relative overflow-hidden px-12 py-4 text-white font-bold text-xl rounded-full transform hover:scale-105 transition-all duration-300 shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{
+              backgroundImage: currentQuestion.backgroundImages?.no
+                ? `url('${currentQuestion.backgroundImages.no}')`
+                : undefined,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
           >
-            いいえ
+            {currentQuestion.backgroundImages?.no && (
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-600/50 to-gray-700/50 hover:from-gray-700/60 hover:to-gray-800/60 transition-all duration-300" />
+            )}
+            <span className="relative z-10">いいえ</span>
           </button>
         </div>
       </div>

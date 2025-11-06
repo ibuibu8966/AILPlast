@@ -8,6 +8,10 @@ export interface Question {
     yes: string | null;
     no: string | null;
   };
+  backgroundImages?: {
+    yes: string;
+    no: string;
+  };
 }
 
 export interface FinalMessage {
@@ -32,6 +36,10 @@ export const questions: Record<string, Question> = {
     nextQuestions: {
       yes: 'q2a',
       no: 'q2b'
+    },
+    backgroundImages: {
+      yes: '/question-bg/q1-yes.png',
+      no: '/question-bg/q1-no.png'
     }
   },
 
@@ -43,6 +51,10 @@ export const questions: Record<string, Question> = {
     nextQuestions: {
       yes: 'q3a',
       no: 'q3b'
+    },
+    backgroundImages: {
+      yes: '/question-bg/q2a-yes.png',
+      no: '/question-bg/q2a-no.png'
     }
   },
   q2b: {
@@ -63,6 +75,10 @@ export const questions: Record<string, Question> = {
     nextQuestions: {
       yes: 'q4a',
       no: 'q4b'
+    },
+    backgroundImages: {
+      yes: '/question-bg/q3a-yes.png',
+      no: '/question-bg/q3a-no.png'
     }
   },
   q3b: {
@@ -92,6 +108,10 @@ export const questions: Record<string, Question> = {
     nextQuestions: {
       yes: 'q5a',
       no: 'q5b'
+    },
+    backgroundImages: {
+      yes: '/question-bg/q4a-yes.png',
+      no: '/question-bg/q4a-no.png'
     }
   },
   q4b: {
@@ -121,6 +141,10 @@ export const questions: Record<string, Question> = {
     nextQuestions: {
       yes: 'q6a',
       no: 'q6b'
+    },
+    backgroundImages: {
+      yes: '/question-bg/q5a-yes.jpg',
+      no: '/question-bg/q5a-no.png'
     }
   },
   q5b: {
@@ -150,6 +174,10 @@ export const questions: Record<string, Question> = {
     nextQuestions: {
       yes: null,  // 申し込みへ
       no: 'q6'
+    },
+    backgroundImages: {
+      yes: '/question-bg/q6a-yes.png',
+      no: '/question-bg/q6a-no.png'
     }
   },
   q6b: {

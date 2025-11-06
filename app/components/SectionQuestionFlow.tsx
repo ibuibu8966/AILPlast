@@ -364,13 +364,23 @@ export default function SectionQuestionFlow({ onComplete }: SectionQuestionFlowP
                   <button
                     onClick={() => handleAnswer(option.value)}
                     disabled={isAnimating}
-                    className={`relative w-full bg-gradient-to-br from-gray-900/90 via-black/90 to-gray-900/90 backdrop-blur-xl border-2 rounded-3xl p-4 md:p-10 transition-all duration-500 h-[260px] md:h-[320px] flex flex-col overflow-hidden
+                    className={`relative w-full backdrop-blur-xl border-2 rounded-3xl p-4 md:p-10 transition-all duration-500 h-[260px] md:h-[320px] flex flex-col overflow-hidden
                       ${isSelected ? 'scale-105 border-cyan-400 shadow-2xl shadow-cyan-500/50' : 'border-cyan-400/30'}
                       ${shouldHide ? 'opacity-0 scale-95 pointer-events-none' : ''}
                       ${!isAnimating && !isSelected ? 'hover:border-cyan-500/50 hover:scale-105 hover:-translate-y-2' : ''}
                       ${isAnimating ? 'cursor-not-allowed' : 'cursor-pointer'}
                     `}
+                    style={{
+                      backgroundImage: option.backgroundImage
+                        ? `url('${option.backgroundImage}')`
+                        : undefined,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center'
+                    }}
                   >
+                    {/* Background overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-gray-900/50 via-black/60 to-gray-900/50"></div>
+
                     {/* Top glow line */}
                     <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent transition-opacity duration-500
                       ${isSelected ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}
